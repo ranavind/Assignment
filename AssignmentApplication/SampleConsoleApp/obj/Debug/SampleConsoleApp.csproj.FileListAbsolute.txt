@@ -1,0 +1,7 @@
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\obj\Debug\SampleConsoleApp.csprojAssemblyReference.cache
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\obj\Debug\SampleConsoleApp.csproj.CoreCompileInputs.cache
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\bin\Debug\SampleConsoleApp.exe.config
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\bin\Debug\SampleConsoleApp.exe
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\bin\Debug\SampleConsoleApp.pdb
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\obj\Debug\SampleConsoleApp.exe
+c:\users\h252209\source\repos\AssignmentApplication\SampleConsoleApp\obj\Debug\SampleConsoleApp.pdb

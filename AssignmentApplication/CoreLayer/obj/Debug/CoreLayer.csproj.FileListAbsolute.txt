@@ -1,0 +1,9 @@
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\bin\Debug\CoreLayer.dll
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\bin\Debug\CoreLayer.pdb
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\bin\Debug\System.ValueTuple.dll
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\bin\Debug\System.ValueTuple.xml
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\obj\Debug\CoreLayer.csprojAssemblyReference.cache
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\obj\Debug\CoreLayer.csproj.CoreCompileInputs.cache
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\obj\Debug\CoreLayer.csproj.CopyComplete
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\obj\Debug\CoreLayer.dll
+c:\users\h252209\source\repos\AssignmentApplication\CoreLayer\obj\Debug\CoreLayer.pdb

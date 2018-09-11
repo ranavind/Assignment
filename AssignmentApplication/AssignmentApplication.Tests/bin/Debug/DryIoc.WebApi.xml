@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DryIoc.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:DryIoc.WebApi.DryIocWebApi">
+            <summary>WebApi DI bootstrapper with DryIoc.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocWebApi.WithWebApi(DryIoc.IContainer,System.Web.Http.HttpConfiguration,System.Collections.Generic.IEnumerable{System.Reflection.Assembly},DryIoc.IScopeContext,System.Func{System.Type,System.Boolean})">
+            <summary>Configures container to work with ASP.NET WepAPI by: 
+            setting container scope context to <see cref="T:DryIoc.AsyncExecutionFlowScopeContext"/> (if scope context is not set already),
+            registering HTTP controllers, setting filter provider and dependency resolver.</summary>
+            <param name="container">Original container.</param> <param name="config">Http configuration.</param>
+            <param name="controllerAssemblies">(optional) Assemblies to look for controllers, default is ExecutingAssembly.</param>
+            <param name="scopeContext">(optional) Specific scope context to use, by default method sets
+            <see cref="T:DryIoc.AsyncExecutionFlowScopeContext"/>, only if container does not have context specified already.</param>
+            <param name="throwIfUnresolved">(optional) Instructs DryIoc to throw exception
+            for unresolved type instead of fallback to default Resolver.</param>
+            <returns>New container.</returns>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocWebApi.RegisterWebApiControllers(DryIoc.IContainer,System.Web.Http.HttpConfiguration,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>Registers controllers found in provided assemblies with <see cref="F:DryIoc.Reuse.InWebRequest"/>.</summary>
+            <param name="container">Container.</param>
+            <param name="config">Http configuration.</param>
+            <param name="assemblies">Assemblies to look for controllers.</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocWebApi.IsController(System.Type)">
+            <summary>Helps to find if type is controller type.</summary>
+            <param name="type">Type to check.</param>
+            <returns>True if controller type</returns>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocWebApi.SetFilterProvider(DryIoc.IContainer,System.Web.Http.Controllers.ServicesContainer)">
+            <summary>Replaces all filter providers in services with <see cref="T:DryIoc.WebApi.DryIocFilterProvider"/>, and registers it in container.</summary>
+            <param name="container">DryIoc container.</param> <param name="services">Services</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocWebApi.InsertRegisterRequestMessageHandler(System.Web.Http.HttpConfiguration)">
+            <summary>Inserts DryIoc delegating request handler into message handlers.</summary>
+            <param name="config">Current configuration.</param>
+        </member>
+        <member name="T:DryIoc.WebApi.DryIocDependencyResolver">
+            <summary>Resolve based on DryIoc container.</summary>
+        </member>
+        <member name="F:DryIoc.WebApi.DryIocDependencyResolver.Container">
+            <summary>Original DryIoc container.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyResolver.#ctor(DryIoc.IContainer,System.Func{System.Type,System.Boolean})">
+            <summary>Creates dependency resolver.</summary>
+            <param name="container">Container.</param>
+            <param name="throwIfUnresolved">(optional) Instructs DryIoc to throw exception
+            for unresolved type instead of fallback to default Resolver.</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyResolver.Dispose">
+            <summary>Disposes container.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyResolver.GetService(System.Type)">
+            <summary>Retrieves a service from the scope or null if unable to resolve service.</summary>
+            <returns>The retrieved service.</returns> <param name="serviceType">The service to be retrieved.</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyResolver.GetServices(System.Type)">
+            <summary>Retrieves a collection of services from the scope or empty collection.</summary>
+            <returns>The retrieved collection of services.</returns>
+            <param name="serviceType">The collection of services to be retrieved.</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyResolver.BeginScope">
+            <summary>Opens scope from underlying container.</summary>
+            <returns>Opened scope wrapped in dependency scope.</returns>
+        </member>
+        <member name="T:DryIoc.WebApi.DryIocDependencyScope">
+            <summary>Dependency scope adapter to scoped DryIoc container.</summary>
+        </member>
+        <member name="F:DryIoc.WebApi.DryIocDependencyScope.ScopedContainer">
+            <summary>Wrapped DryIoc container.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyScope.#ctor(DryIoc.IResolverContext,System.Func{System.Type,System.Boolean})">
+            <summary>Adapts input container.</summary>
+            <param name="scopedContainer">Container returned by OpenScope method.</param>
+            <param name="throwIfUnresolved">(optional) Instructs DryIoc to throw exception
+            for unresolved type instead of fallback to default Resolver.</param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyScope.Dispose">
+            <summary>Disposed underlying scoped container.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyScope.GetService(System.Type)">
+            <summary>Retrieves a service from the scope or returns null if not resolved.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocDependencyScope.GetServices(System.Type)">
+            <summary>Retrieves a collection of services from the scope or empty collection.</summary>
+            <returns>The retrieved collection of services.</returns>
+            <param name="serviceType">The collection of services to be retrieved.</param>
+        </member>
+        <member name="T:DryIoc.WebApi.DryIocFilterProvider">
+            <summary>Aggregated filter provider.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocFilterProvider.#ctor(DryIoc.IContainer,System.Collections.Generic.IEnumerable{System.Web.Http.Filters.IFilterProvider})">
+            <summary>Creates filter provider.</summary>
+            <param name="container"></param> <param name="providers"></param>
+        </member>
+        <member name="M:DryIoc.WebApi.DryIocFilterProvider.GetFilters(System.Web.Http.HttpConfiguration,System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary> Returns an enumeration of filters. </summary>
+            <returns> An enumeration of filters. </returns>
+            <param name="configuration">The HTTP configuration.</param><param name="actionDescriptor">The action descriptor.</param>
+        </member>
+        <member name="T:DryIoc.WebApi.RegisterRequestMessageHandler">
+            <summary>Registers current <see cref="T:System.Net.Http.HttpRequestMessage"/> into dependency scope.</summary>
+        </member>
+        <member name="M:DryIoc.WebApi.RegisterRequestMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>Registers request into dependency scope and sends proceed the pipeline.</summary> 
+            <param name="request">The HTTP request message to send to the server.</param>
+            <param name="cancellationToken">A cancellation token to cancel operation.</param>
+            <returns>The task object representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:DryIoc.WebApi.RegisterRequestMessageHandler.RegisterInDependencyScope(System.Net.Http.HttpRequestMessage)">
+            <summary>Registers request into current dependency scope.</summary>
+        </member>
+    </members>
+</doc>
